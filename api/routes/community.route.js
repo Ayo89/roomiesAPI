@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const { createCommunity, getAllCommunities, getOneCommunity, deleteOneCommunity, updateOneComunity, addUserToCommunity, removeUserFromCommunity, createCommunityByAdmin } = require('../controllers/community.controller')
+const { createCommunity, getAllCommunities, getOneCommunity, deleteOneCommunity, updateOneComunity, addUserToCommunity, removeUserFromCommunity, createCommunityByAdmin, inviteUser } = require('../controllers/community.controller')
 const { checkAdmin, checkManager } = require('../middlewares/auth')
 
 
@@ -10,7 +10,7 @@ router.get('/:id', checkAdmin, getOneCommunity)
 router.delete('/:id', checkAdmin, deleteOneCommunity)
 
 router.post('/createCommunity', createCommunity)
-router.post('/addUser/:id', checkManager, addUserToCommunity)
+router.post('/addUser',inviteUser)
 router.post('/:id', checkManager, updateOneComunity)
 router.delete('/removeUser/:id', checkManager, removeUserFromCommunity)
 
