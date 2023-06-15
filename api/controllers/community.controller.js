@@ -96,11 +96,12 @@ async function removeUserFromCommunity(req, res) {
   } catch (err) { res.status(500).send(err.message) }
 }
 
+
 async function inviteUser(req, res) {
   try {
     const user = res.locals.user
     const community = await Community.findByPk(user.communityId)
-    res.status(200).send(`You are invited to '${community.name}, with this ID: ${user.communityId}`)
+    res.status(200).json({ communityName: community.name, communityId: user.communityId });
   } catch (err) {
     res.status(500).send(err.message)
   }

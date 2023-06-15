@@ -23,8 +23,9 @@ const login = async (req, res) => {
 			if (err || !result) {
 				return res.status(400).send('User email or password incorrect')
 			}
+			const role = user.role
 			const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '7d' })
-			return res.status(200).json({ token })
+			return res.status(200).json({ token, role });
 		})
 	} catch (error) {
 		console.log(error)
