@@ -83,7 +83,7 @@ async function inviteUser(req, res) {
   try {
     const user = res.locals.user
     const community = await Community.findByPk(user.communityId)
-    res.status(200).send({communityName: community.name, communityId: community.id})
+    res.status(200).json({community})
   } catch(err) {
     res.status(500).send(err.message)
   }
