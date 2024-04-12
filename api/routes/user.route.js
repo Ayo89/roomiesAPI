@@ -12,12 +12,12 @@ const {
 
 const { checkAdmin } = require('../middlewares/auth')
 
-router.get('/', checkAdmin, getAllUsers)
-router.get('/:id', checkAdmin, getOneUser)
-router.post('/', checkAdmin, createUser)
-router.put('/:id', checkAdmin, updateUser)
+router.get('/', getAllUsers)
+router.get('/:id', getOneUser)
+router.post('/', createUser)
+router.put('/:id', updateUser)
 router.put('/profile/:id', selfUpdate)
-router.delete('/:id', checkAdmin, deleteUser)
+router.delete('/:id', deleteUser)
 router.delete('/profile', selfDelete)
 
 module.exports = router

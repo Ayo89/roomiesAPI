@@ -14,22 +14,21 @@ const {
   getAllUsersByCommunity
 } = require('../controllers/community.controller')
 
-const { 
-  checkAdmin, 
+const {
   checkManager 
 } = require('../middlewares/auth')
 
 
 
-router.get('/', checkAdmin, getAllCommunities)
+router.get('/', getAllCommunities)
 router.get('/profile', inviteUser)
 router.get("/profile/users", getAllUsersByCommunity);
-router.get('/:id', checkAdmin, getOneCommunity)
-router.post('/', checkAdmin, createCommunityByAdmin)
+router.get('/:id', getOneCommunity)
+router.post('/', createCommunityByAdmin)
 router.post('/profile', createCommunity)
 router.post('/profile/:communityId', joinCommunity)
 router.put('/profile/:id', updateOneComunity)
-router.delete('/:id', checkAdmin, deleteOneCommunity)
+router.delete('/:id', deleteOneCommunity)
 router.delete('/profile/:id', removeUserFromCommunity)
 
 router.post('/createCommunity', createCommunity)
