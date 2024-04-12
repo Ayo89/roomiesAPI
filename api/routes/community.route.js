@@ -22,18 +22,18 @@ const {
 
 
 router.get('/', checkAdmin, getAllCommunities)
-router.get('/profile', checkManager, inviteUser)
+router.get('/profile', inviteUser)
 router.get("/profile/users", getAllUsersByCommunity);
 router.get('/:id', checkAdmin, getOneCommunity)
 router.post('/', checkAdmin, createCommunityByAdmin)
 router.post('/profile', createCommunity)
 router.post('/profile/:communityId', joinCommunity)
-router.put('/profile/:id', checkManager, updateOneComunity)
+router.put('/profile/:id', updateOneComunity)
 router.delete('/:id', checkAdmin, deleteOneCommunity)
-router.delete('/profile/:id', checkManager, removeUserFromCommunity)
+router.delete('/profile/:id', removeUserFromCommunity)
 
 router.post('/createCommunity', createCommunity)
-router.post('/:id', checkManager, updateOneComunity)
-router.delete('/removeUser/:id', checkManager, removeUserFromCommunity)
+router.post('/:id', updateOneComunity)
+router.delete('/removeUser/:id', removeUserFromCommunity)
 
 module.exports = router
